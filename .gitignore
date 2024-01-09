@@ -9,3 +9,6 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+game_path.txt
+libil2cpp_path.txt
