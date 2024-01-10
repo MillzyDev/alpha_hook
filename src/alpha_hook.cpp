@@ -30,6 +30,6 @@ void find_method_by_name_test() {
     }
 }
 
-void alpha_hook::init() {
+__declspec(dllexport) void alpha_hook::init() {
     find_method_by_name_test();
 }

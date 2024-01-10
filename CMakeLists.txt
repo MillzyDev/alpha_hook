@@ -70,3 +70,4 @@ target_link_libraries(alpha_hook PRIVATE ${GAME_PATH}/GameAssembly.dll)
 add_subdirectory(Dobby)
 target_link_libraries(alpha_hook PRIVATE dobby)
 
+target_compile_definitions(alpha_hook PRIVATE -DALPHA_HOOK_EXPORT_SYMBOLS)
