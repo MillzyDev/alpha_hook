@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED 23)
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SHARED_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shared)
+set(EXTERN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extern)
 
 if (NOT MSVC)
     add_compile_options(-frtti -fexceptions -Wreturn-type)
@@ -43,8 +44,9 @@ add_library(
 
 target_include_directories(alpha_hook PRIVATE .)
 target_include_directories(alpha_hook PRIVATE ${SOURCE_DIR})
-#target_include_directories(alpha_hook PRIVATE ${INCLUDE_DIR})
+target_include_directories(alpha_hook PRIVATE ${INCLUDE_DIR})
 target_include_directories(alpha_hook PUBLIC ${SHARED_DIR})
+target_include_directories(alpha_hook PRIVATE ${EXTERN_DIR})
 
 # IL2CPP headers
 if (NOT MSVC)
@@ -66,6 +68,8 @@ endif()
 
 target_include_directories(alpha_hook PUBLIC ${LIBIL2CPP_PATH})
 target_link_libraries(alpha_hook PRIVATE ${GAME_PATH}/GameAssembly.dll)
+
+target_link_libraries(alpha_hook PRIVATE ${GAME_PATH}/alpha1/alpha1.dll)
 
 add_subdirectory(Dobby)
 target_link_libraries(alpha_hook PRIVATE dobby)
